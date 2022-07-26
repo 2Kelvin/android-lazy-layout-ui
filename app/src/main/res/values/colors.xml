@@ -12,4 +12,6 @@
     <color name="tile_black">#FF303539</color>
     <color name="bg_tile">#FF3D454C</color>
     <color name="fade_text">#FF4E5255</color>
+    <color name="orange">#FFFEBE5F</color>
+    <color name="my_red">#FFFF498A</color>
 </resources>

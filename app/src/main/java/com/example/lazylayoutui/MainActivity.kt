@@ -3,22 +3,25 @@ package com.example.lazylayoutui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.LinearGradient
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lazylayoutui.ui.theme.LazyLayoutUITheme
@@ -47,21 +50,52 @@ fun LazyLayout() {
             .fillMaxSize()
             .background(colorResource(R.color.bg_black))
     ) {
-        // top settings icon
-        Icon(
-            imageVector = Icons.Sharp.Settings,
-            contentDescription = null,
-            modifier = Modifier
-                .align(Alignment.End)
-                .size(28.dp),
-            tint = Color.White
-        )
+        // column icon
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .padding(top = 10.dp, end = 15.dp),
+            horizontalAlignment = Alignment.End
+        ) {
+            Icon(
+                imageVector = Icons.Sharp.Settings,
+                contentDescription = null,
+                modifier = Modifier.size(28.dp),
+                tint = Color.White
+            )
+        }
+        // column profile & bio
+        Column(
+            Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            val linearGradientBrush = Brush.linearGradient(
+                colors = listOf(colorResource(R.color.my_red), colorResource(R.color.orange)),
+                start = Offset.Infinite,
+                end = Offset.Zero
+            )
+
+            Card(
+                shape = CircleShape,
+                backgroundColor = colorResource(R.color.bg_black),
+                modifier = Modifier.border(2.dp, linearGradientBrush, CircleShape)
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.laughm),
+                    contentDescription = "profile",
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .clip(CircleShape)
+                        .size(85.dp)
+                )
+            }
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun LazyLayoutPreview() {
     LazyLayoutUITheme {
         LazyLayout()
     }

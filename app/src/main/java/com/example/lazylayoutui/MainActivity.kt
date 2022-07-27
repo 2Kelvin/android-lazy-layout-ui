@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.sharp.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,6 +25,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.lazylayoutui.ui.theme.LazyLayoutUITheme
 
 class MainActivity : ComponentActivity() {
@@ -58,7 +60,7 @@ fun LazyLayout() {
             horizontalAlignment = Alignment.End
         ) {
             Icon(
-                imageVector = Icons.Sharp.Settings,
+                imageVector = Icons.Rounded.Settings,
                 contentDescription = null,
                 modifier = Modifier.size(28.dp),
                 tint = Color.White
@@ -89,6 +91,18 @@ fun LazyLayout() {
                         .size(85.dp)
                 )
             }
+            Text(
+                text = "Chris Orenga",
+                fontSize = 30.sp,
+                modifier = Modifier.padding(top = 7.dp),
+                color = Color.White
+            )
+            Text(
+                text = "Member since July 23rd, 2018",
+                color = colorResource(R.color.fade_text),
+                fontSize = 16.sp,
+                modifier = Modifier.padding(bottom = 7.dp)
+            )
         }
     }
 }
